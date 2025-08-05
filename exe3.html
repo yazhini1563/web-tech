@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Grade Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label, input {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px;
+      width: 100%;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Student Grade Calculator</h2>
+    <label for="name">Student Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="marks">Marks (0 - 100):</label>
+    <input type="number" id="marks" min="0" max="100" required>
+
+    <button onclick="calculateGrade()">Calculate Grade</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateGrade() {
+      const name = document.getElementById("name").value.trim();
+      const marks = parseFloat(document.getElementById("marks").value);
+      const resultDiv = document.getElementById("result");
+
+      if (!name || isNaN(marks)) {
+        resultDiv.textContent = "Please enter both name and valid marks.";
+        resultDiv.style.color = "red";
+        return;
+      }
+
+      let grade = "";
+
+      if (marks >= 90) {
+        grade = "A";
+      } else if (marks >= 80) {
+        grade = "B";
+      } else if (marks >= 70) {
+        grade = "C";
+      } else if (marks >= 60) {
+        grade = "D";
+      } else {
+        grade = "F";
+      }
+
+      resultDiv.textContent = `${name} scored ${marks} and received grade: ${grade}`;
+      resultDiv.style.color = "green";
+    }
+  </script>
+</body>
+</html>

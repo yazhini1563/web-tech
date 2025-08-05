@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #slide { width: 600px; height: 400px; }
+    button { margin: 10px; }
+  </style>
+</head>
+<body> 
+<img id="slide" src="" alt="Slideshow" />
+<br/>
+<button onclick="prev()">Prev</button>
+<button onclick="next()">Next</button>
+
+<script>
+  const images = [
+    "https://picsum.photos/id/1015/600/400",
+    "https://picsum.photos/id/1016/600/400",
+    "https://picsum.photos/id/1020/600/400"
+  ];
+  let index = 0;
+  const slide = document.getElementById('slide');
+
+  function show() {
+    slide.src = images[index];
+  }
+
+  function next() {
+    index = (index + 1) % images.length;
+    show();
+  }
+
+  function prev() {
+    index = (index - 1 + images.length) % images.length;
+    show();
+  }
+
+  show(); // start
+</script>
+
+</body>
+</html>
