@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dynamic Table Generator</title>
+  <title>Dynamic Table Example</title>
 </head>
 <body>
-  <h2>Dynamic Table Generator</h2>
-  <button onclick="generateTable()">Generate Table</button>
-  <div id="tableContainer"></div>
+  <h2>Dynamic Table Example</h2>
+  <button onclick="createTable()">Create Table</button>
+  <div id="output"></div>
 
   <script>
-    function generateTable() {
-      const rows = 3;
-      const cols = 4;
-
+    function createTable() {
       const table = document.createElement("table");
-      table.border = "1";
+      table.setAttribute("border", "1");
       table.style.borderCollapse = "collapse";
 
-      for (let i = 0; i < rows; i++) {
-        const tr = document.createElement("tr");
+      for (let row = 1; row <= 5; row++) {
+        const tableRow = document.createElement("tr");
 
-        for (let j = 0; j < cols; j++) {
-          const td = document.createElement("td");
-          td.innerText = `Row ${i + 1}, Col ${j + 1}`;
-          td.style.padding = "8px";
-          tr.appendChild(td);
+        for (let col = 1; col <= 3; col++) {
+          const cell = document.createElement("td");
+          const text = document.createTextNode(`R${row}C${col}`);
+          cell.appendChild(text);
+          cell.style.padding = "10px";
+          tableRow.appendChild(cell);
         }
 
-        table.appendChild(tr);
+        table.appendChild(tableRow);
       }
 
-      const container = document.getElementById("tableContainer");
-      container.innerHTML = ""; // Clear previous table
-      container.appendChild(table);
+      const outputDiv = document.getElementById("output");
+      outputDiv.innerHTML = ""; // Clear previous content
+      outputDiv.appendChild(table);
     }
   </script>
 </body>
