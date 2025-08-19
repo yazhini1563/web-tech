@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toggle Background</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    p {
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<p id="myPara">Double-click me to change my background color!</p>
+
+<script>
+  $(document).ready(function() {
+    $('#myPara').dblclick(function() {
+      $(this).css('background-color', function(_, currentColor) {
+        return currentColor === 'rgb(255, 255, 0)' ? 'white' : 'yellow';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
+
