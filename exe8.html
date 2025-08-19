@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Click & Double Click</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<p id="myPara">Click or double-click me!</p>
+
+<script>
+  $(document).ready(function() {
+    $('#myPara').click(function() {
+      alert('Paragraph clicked!');
+    });
+
+    $('#myPara').dblclick(function() {
+      alert('Paragraph double-clicked!');
+    });
+  });
+</script>
+
+</body>
+</html>
